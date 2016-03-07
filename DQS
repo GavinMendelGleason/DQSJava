@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# LD_LIBRARY_PATH=/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/
+
+JPLSO=/home/gavin/lib/swipl-7.3.17/lib/x86_64-linux/libjpl.so
+JVMPATH=/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server/
+
+javac -cp $CLASSPATH:/home/gavin/lib/swipl-7.3.17/lib/jpl.jar:. DQS.java
+env LD_PRELOAD=$JPLSO LD_LIBRARY_PATH=$JVMPATH java -cp $CLASSPATH:/home/gavin/lib/swipl-7.3.17/lib/jpl.jar:. -Djava.library.path="/home/gavin/lib/swipl-7.3.17/lib/x86_64-linux" DQS $@
